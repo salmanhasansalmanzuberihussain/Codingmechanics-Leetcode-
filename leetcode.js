@@ -65,3 +65,33 @@ var longestCommonPrefix = function (strs) {
   }
   return prefix;
 };
+
+//20. Valid Parenteses
+var isValid = function (s) {
+  const map = { '{': '}', '(': ')', '[': ']' };
+  let stack = [];
+  for (let i = 0; i < s.length; i++) {
+    let val = s[i];
+    if (map[val]) {
+      stack.push(map[val]);
+    } else if (stack.pop() != val) {
+      return false;
+    }
+  }
+  return !stack.length;
+};
+
+//121. Best Time to Buy and Sell Stock
+var maxProfit = function (prices) {
+  base = prices[0];
+  let money = 0;
+
+  for (let j = 0; j < prices.length; j++) {
+    if (base > prices[j]) {
+      base = prices[j];
+    } else {
+      money = Math.max(prices[j] - base, money);
+    }
+  }
+  return money;
+};
