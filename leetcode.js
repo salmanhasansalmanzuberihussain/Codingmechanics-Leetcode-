@@ -95,3 +95,18 @@ var maxProfit = function (prices) {
   }
   return money;
 };
+
+//125. Valid Palindrome
+
+var isPalindrome = function (s) {
+  let newstring = s.slice('').toLowerCase(); //lowercase and when to slice
+  let storage = [];
+  let alphabet = '0123456789abcdefghijklmnopqrstuvwxyz';
+
+  for (let i = 0; i < newstring.length; i++) {
+    if (alphabet.includes(newstring[i])) {
+      storage.push(newstring[i]);
+    }
+  }
+  return storage.join('') == storage.reverse().join('');
+};
