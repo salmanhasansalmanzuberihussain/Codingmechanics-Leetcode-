@@ -97,7 +97,6 @@ var maxProfit = function (prices) {
 };
 
 //125. Valid Palindrome
-
 var isPalindrome = function (s) {
   let newstring = s.slice('').toLowerCase(); //lowercase and when to slice
   let storage = [];
@@ -109,4 +108,25 @@ var isPalindrome = function (s) {
     }
   }
   return storage.join('') == storage.reverse().join('');
+};
+
+//136.Single number
+var singleNumber = function (nums) {
+  //anytime you want to store use that frequency pattern
+  let map = {}; //object
+
+  //for of loop
+  for (let val of nums) {
+    //val of nums is = map[val] = map[val]||0 +1
+    map[val] = (map[val] || 0) + 1; //thats how you incrememnt this
+  }
+
+  //for in loop
+  for (let yo in map) {
+    //for loop
+    if (map[yo] === 1) {
+      //for in loop =1 return that variable
+      return yo;
+    }
+  }
 };
