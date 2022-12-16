@@ -144,3 +144,30 @@ var hasCycle = function (head) {
   }
   return false;
 };
+
+//160.Intersection of two linked lists
+var getIntersectionNode = function (headA, headB) {
+  if (!headA || !headB) return null;
+
+  let pA = headA;
+  let pB = headB;
+
+  while (pA !== pB) {
+    if (pA === null) {
+      pA = headB;
+    } else {
+      pA = pA.next;
+    }
+
+    if (pB === null) {
+      pB = headA;
+    } else {
+      pB = pB.next;
+    }
+  }
+  return pA;
+
+  //Questions i have, why is pointA not equal to pointB
+  //if pA === null then pA = headB and pA= pA.next
+  //if pB=== null pB = headA, pB = pB.next
+};
