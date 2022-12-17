@@ -81,6 +81,31 @@ var isValid = function (s) {
   return !stack.length;
 };
 
+//21. Merge two sorted arrays
+var mergeTwoLists = function (list1, list2) {
+  let dummy = new ListNode(0);
+  let prev = dummy;
+
+  while (list1 && list2) {
+    if (list1.val < list2.val) {
+      prev.next = list1;
+      prev = list1;
+      list1 = list1.next;
+    } else {
+      prev.next = list2;
+      prev = list2;
+      list2 = list2.next;
+    }
+  }
+  if (!list1) {
+    prev.next = list2;
+  }
+  if (!list2) {
+    prev.next = list1;
+  }
+  return dummy.next;
+};
+
 //121. Best Time to Buy and Sell Stock
 var maxProfit = function (prices) {
   base = prices[0];
