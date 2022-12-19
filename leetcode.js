@@ -213,3 +213,18 @@ function findMissingRanges(nums, lower, upper) {
   }
   return res;
 }
+
+//169.Majority Element
+var majorityElement = function (nums) {
+  let result = [];
+
+  for (let val of nums) {
+    result[val] = (result[val] || 0) + 1;
+  }
+
+  for (let key in result) {
+    if (result[key] > nums.length / 2) {
+      return key;
+    }
+  }
+};
