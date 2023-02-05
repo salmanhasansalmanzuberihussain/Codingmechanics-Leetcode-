@@ -106,6 +106,45 @@ var mergeTwoLists = function (list1, list2) {
   return dummy.next;
 };
 
+//26. Remove Duplicates from Sorted Array
+var removeDuplicates = function (nums) {
+  let index = 1;
+  for (let i = 0; i < nums.length - 1; i++) {
+    if (nums[i] !== nums[i + 1]) {
+      nums[index] = nums[i + 1];
+      index++;
+    }
+  }
+  return index;
+};
+
+//66. Plus One
+var plusOne = function (digits) {
+  for (let i = digits.length - 1; i >= 0; i--) {
+    if (digits[i] < 9) {
+      digits[i] = digits[i] + 1;
+      return digits;
+    } else {
+      digits[i] = 0;
+    }
+  }
+  digits.unshift(1);
+  return digits;
+};
+
+//69. Sqrt(x)
+var mySqrt = function (x) {
+  let sqrt = 1;
+  if (x === 0) {
+    return 0;
+  }
+
+  for (let i = 1; i * i <= x; i++) {
+    sqrt = i;
+  }
+  return sqrt;
+};
+
 //121. Best Time to Buy and Sell Stock
 var maxProfit = function (prices) {
   base = prices[0];
