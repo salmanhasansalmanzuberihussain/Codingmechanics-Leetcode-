@@ -145,6 +145,36 @@ var mySqrt = function (x) {
   return sqrt;
 };
 
+//88. Merge Sorted Array
+var merge = function (nums1, m, nums2, n) {
+  first = m - 1;
+  second = n - 1;
+  i = nums1.length - 1;
+  while (second >= 0) {
+    fval = nums1[first];
+    sval = nums2[second];
+    if (fval >= sval) {
+      nums1[i] = fval;
+      first--;
+      i--;
+    } else {
+      nums1[i] = sval;
+      second--;
+      i--;
+    }
+  }
+};
+
+//70. Climbing stairs
+
+var climbStairs = function (n) {
+  let memo = [1, 1, 2];
+  for (let i = 0; i <= n; i++) {
+    memo[i] = memo[i - 1] + memo[i - 2];
+  }
+  return memo;
+};
+
 //121. Best Time to Buy and Sell Stock
 var maxProfit = function (prices) {
   base = prices[0];
