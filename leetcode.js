@@ -165,14 +165,83 @@ var merge = function (nums1, m, nums2, n) {
   }
 };
 
-//70. Climbing stairs
+//94. Binary Tree Inorder Traversal
+var inorderTraversal = function (root) {
+  let stack = [];
+  let output = [];
 
+  while (stack.length > 0 || root !== null) {
+    if (root !== null) {
+      stack.push(root);
+      root = root.left;
+    } else {
+      root = stack.pop();
+      output.push(root.val);
+      root = root.right;
+    }
+  }
+  return output;
+};
+
+//70. Climbing stairs
 var climbStairs = function (n) {
   let memo = [1, 1, 2];
   for (let i = 0; i <= n; i++) {
     memo[i] = memo[i - 1] + memo[i - 2];
   }
   return memo;
+};
+
+//88. Merge Sorted Array
+var merge = function (nums1, m, nums2, n) {
+  let first = m - 1; //pointers
+  let second = n - 1; //pointers
+  let i = nums1.length - 1;
+  while (second >= 0) {
+    let firstval = nums1[first];
+    let secondval = nums2[second];
+    if (firstval > secondval) {
+      nums1[i] = firstval;
+      first--;
+      i--;
+    } else {
+      nums1[i] = secondval;
+      second--;
+      i--;
+    }
+  }
+};
+
+//94. Binary Tree Inorder Traversal
+var inorderTraversal = function (root) {
+  let stack = [];
+  let output = [];
+
+  while (stack.length > 0 || root !== null) {
+    if (root !== null) {
+      stack.push(root);
+      root = root.left;
+    } else {
+      root = stack.pop();
+      output.push(root.val);
+      root = root.right;
+    }
+  }
+  return output;
+};
+
+//94. Binary Tree Inorder Traversal (Option 2)
+var inorderTraversal = function (root) {
+  let stack = [];
+  hello(root);
+
+  function hello(root) {
+    if (!root) return null;
+    hello(root.left);
+    stack.push(root.val);
+    hello(root.right);
+  }
+  return stack;
 };
 
 //121. Best Time to Buy and Sell Stock
