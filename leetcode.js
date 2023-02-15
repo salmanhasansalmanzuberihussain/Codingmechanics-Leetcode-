@@ -244,6 +244,27 @@ var inorderTraversal = function (root) {
   return stack;
 };
 
+//101. Symmetric tree [Recusive]
+var isSymmetric = function (root) {
+  let res = true;
+
+  function hello(root1, root2) {
+    if (!root1 && !root2) {
+      return;
+    }
+
+    if (!root1 || !root2 || root1.val !== root2.val) {
+      res = false;
+      return;
+    }
+
+    hello(root1.left, root2.right);
+    hello(root2.left, root1.right);
+  }
+  hello(root, root);
+  return res;
+};
+
 //121. Best Time to Buy and Sell Stock
 var maxProfit = function (prices) {
   base = prices[0];
